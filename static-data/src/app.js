@@ -21,6 +21,9 @@ app.get("/users/:userId", (req, res, next) => {
 });
 
 // TODO: Return all states from /states in the form of { data: Array }
+app.get("/states", (req, res, next) => {
+    res.json({ data: states });
+});
 
 // TODO: Return a single state from /states/:stateCode in the form of { data: { stateCode: String, name: String } }
 
