@@ -10,6 +10,15 @@ app.get("/users", (req, res) => {
 });
 
 // TODO: Return a single user by id from /users/:userId in form of { data: Object }
+app.get("/users/:userId", (req, res, next) => {
+    const { userId } = req.params;
+    const user = users.find(user => user.id === Number(userId));
+    if (user) {
+        res.json({ data: user })
+    } else {
+        next(`User ID not found: ${userId}`);
+    }
+});
 
 // TODO: Return all states from /states in the form of { data: Array }
 
