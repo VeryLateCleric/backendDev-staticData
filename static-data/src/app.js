@@ -5,6 +5,9 @@ const users = require("./data/users-data");
 const states = require("./data/states-data");
 
 // TODO: Return an array of users from /users in form of { data: Array }
+app.get("/users", (req, res) => {
+    res.json({ data: users });
+});
 
 // TODO: Return a single user by id from /users/:userId in form of { data: Object }
 
