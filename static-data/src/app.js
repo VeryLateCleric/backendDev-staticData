@@ -26,6 +26,15 @@ app.get("/states", (req, res, next) => {
 });
 
 // TODO: Return a single state from /states/:stateCode in the form of { data: { stateCode: String, name: String } }
+app.get("states/:stateCode", (req, res, next) => {
+    const { stateCode } = req.params;
+    const stateName = states[stateCode.toUpperCase()];
+    if (stateName) {
+        res.json({ data: { stateCode: stateCode.toUpperCase(), name: stateName }});
+    } else {
+        next(`State code not found: ${stateCode}`);
+    }
+});
 
 // TODO: Add not-found handler.
 app.use((req, res, next) => {
