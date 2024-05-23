@@ -13,7 +13,13 @@ const states = require("./data/states-data");
 // TODO: Return a single state from /states/:stateCode in the form of { data: { stateCode: String, name: String } }
 
 // TODO: Add not-found handler.
+app.use((req, res, next) => {
+    next(`Not found: ${request.originalUrl}`);
+});
 
 // TODO: Add error handler.
-
+app.use((error, req, res, next) => {
+    console.error(error);
+    response.send(error);
+})
 module.exports = app;
